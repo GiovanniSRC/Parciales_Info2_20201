@@ -19,6 +19,7 @@ int main()
     cout<<"4. Dado un disparo ofensivo, generar (al emnos tres) disparo defensivos que impidan que los cañones defensivo y ofensivo puedan ser destruidos"<<endl;
     cout<<"Ingrese lo que desea simular: ";
     cin>>opc;
+    cout<<endl;
 
     if(opc==1){
         int num_intentos=0;
@@ -39,12 +40,47 @@ int main()
             disc=(pow(Vo,2)-(4*(g/2)*(Hd-Ho)));
 
             if(disc>0){
-                int t1,t2;
+                float t1,t2;
+
+                /*Calculo del tiempo de vuelo*/
                 t1=(-Vo*sin(alfao)+sqrt(disc))/2*(g/2);
                 t2=(-Vo*sin(alfao)-sqrt(disc))/2*(g/2);
 
                 if(t1>t2){
+                    if(t1<2.5){
+                        cout<<"Condiciones que hicieron el ataque efectivo"<<endl;
+                        cout<<"Altura canion ofensivo= "<<Ho<<endl;
+                        cout<<"Altura canion defensivo= "<<Hd<<endl;
+                        cout<<"Velocidad del lanzamiento del canion ofensivo= "<<Vo<<endl;
+                        cout<<"Tiempo en que fue impactado el canion defensivo= "<<t1<<endl;
+                        cout<<endl;
+                        num_intentos+=1;
+                    }
 
+                    else{
+                        continue;
+                    }
+
+                }
+
+                else if(t2>t1){
+                    if(t2<2.5){
+                        cout<<"Condiciones que hicieron el ataque efectivo"<<endl;
+                        cout<<"Altura canion ofensivo= "<<Ho<<endl;
+                        cout<<"Altura canion defensivo= "<<Hd<<endl;
+                        cout<<"Velocidad del lanzamiento del canion ofensivo= "<<Vo<<endl;
+                        cout<<"Tiempo en que fue impactado el canion defensivo= "<<t2<<endl;
+                        cout<<endl;
+                        num_intentos+=1;
+                    }
+
+                    else{
+                        continue;
+                    }
+                }
+
+                else if(t1<0&&t2<0){
+                    continue;
                 }
 
             }
