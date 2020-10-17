@@ -7,8 +7,10 @@ using namespace std;
 
 int main()
 {
-    int d, Ho, Hd, alfao, alfad, opc;
-    int Xo, Yo, Xd, Yd;
+    float d, Ho, Hd, alfao, alfad;
+    float Xo, Yo, Xd, Yd, Vo, Vd;
+    float g=9.8, disc;
+    int opc;
 
     cout<<"Sistema de simulación."<<endl;
     cout<<"1. Generar disparos (al menos tres) ofensivos que comprometan la integridad del cañón defensivo."<<endl;
@@ -19,14 +21,41 @@ int main()
     cin>>opc;
 
     if(opc==1){
-        srand(time(NULL));
+        int num_intentos=0;
 
-        /*Se genera una distancia aleatoria que estará entre 1000 metros y 10000 metros
-         * que equivale a una distancia entre 1km y 10km*/
-        d=1000+rand()%(10000+1-1000); //Distancia a la que se encuentran los cañones
+        while (num_intentos<3) {
 
-        alfao=5+rand()%(90+1-5); //Angulo aleatorio para el lanzamiento del disparo ofensivo entre 5° y 90°
-        Ho=1+rand()%(10+1-1);//
+            srand(time(NULL));
+
+            /*Se genera una distancia aleatoria que estará entre 1000 metros y 10000 metros
+             * que equivale a una distancia entre 1km y 10km*/
+            d=1000+rand()%(10000+1-1000); //Distancia a la que se encuentran los cañones
+
+            alfao=5+rand()%(90+1-5); //Angulo aleatorio para el lanzamiento del disparo ofensivo entre 5° y 90°
+            Ho=1+rand()%(10+1-1);//Altura para el cañon ofensivo entre 1 metro y 10 metros
+            Hd=1+rand()%(10+1-1);//Altura para el cañon defensivo 1 metro y 10 metros
+            Vo=1+rand()%(100+1-1); //velocidad del disparo por parte del cañon ofensivo
+
+            disc=(pow(Vo,2)-(4*(g/2)*(Hd-Ho)));
+
+            if(disc>0){
+                int t1,t2;
+                t1=(-Vo*sin(alfao)+sqrt(disc))/2*(g/2);
+                t2=(-Vo*sin(alfao)-sqrt(disc))/2*(g/2);
+
+                if(t1>t2){
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+
 
 
     }
