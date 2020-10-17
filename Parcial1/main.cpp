@@ -21,12 +21,15 @@ int main()
     cin>>opc;
     cout<<endl;
 
+    srand(time(NULL));
+
     if(opc==1){
+
         int num_intentos=0;
 
         while (num_intentos<3) {
 
-            srand(time(NULL));
+
 
             /*Se genera una distancia aleatoria que estará entre 1000 metros y 10000 metros
              * que equivale a una distancia entre 1km y 10km*/
@@ -46,9 +49,11 @@ int main()
                 t1=(-Vo*sin(alfao)+sqrt(disc))/2*(g/2);
                 t2=(-Vo*sin(alfao)-sqrt(disc))/2*(g/2);
 
-                if(t1>t2){
+
+                if((t1>t2)){
                     if(t1<2.5){
                         cout<<"Condiciones que hicieron el ataque efectivo"<<endl;
+                        cout<<"Distancia entre los caniones= "<<d<<endl;
                         cout<<"Altura canion ofensivo= "<<Ho<<endl;
                         cout<<"Altura canion defensivo= "<<Hd<<endl;
                         cout<<"Velocidad del lanzamiento del canion ofensivo= "<<Vo<<endl;
@@ -63,9 +68,10 @@ int main()
 
                 }
 
-                else if(t2>t1){
+                else if((t2>t1)&&(t1>0&&t2>0)){
                     if(t2<2.5){
                         cout<<"Condiciones que hicieron el ataque efectivo"<<endl;
+                        cout<<"Distancia entre los caniones= "<<d<<endl;
                         cout<<"Altura canion ofensivo= "<<Ho<<endl;
                         cout<<"Altura canion defensivo= "<<Hd<<endl;
                         cout<<"Velocidad del lanzamiento del canion ofensivo= "<<Vo<<endl;
@@ -77,10 +83,6 @@ int main()
                     else{
                         continue;
                     }
-                }
-
-                else if(t1<0&&t2<0){
-                    continue;
                 }
 
             }
